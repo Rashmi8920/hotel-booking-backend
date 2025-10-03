@@ -5,12 +5,7 @@ import dotenv from "dotenv";
 dotenv.config(); // .env file load karne ke liye
 
 const url = process.env.MONGODB_URI;
-var a = mongoose.connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    tls: true,
-    tlsAllowInvalidCertificates: false,
-});
+var a = mongoose.connect(url);
 const db = mongoose.connection;
 db.on("open", err => {
   if (err) {
