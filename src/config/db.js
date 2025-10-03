@@ -5,7 +5,12 @@ import dotenv from "dotenv";
 dotenv.config(); // .env file load karne ke liye
 
 const url = process.env.MONGODB_URI;
-var a = mongoose.connect(url);
+var a = mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    tls: true,                     // ensures TLS 1.2+ connection
+    tlsAllowInvalidCertificates: false,
+});
 const db = mongoose.connection;
 db.on("open", err => {
   if (err) {
@@ -15,4 +20,5 @@ db.on("open", err => {
 });
 
 export default db;
+
 
