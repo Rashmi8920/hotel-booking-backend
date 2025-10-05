@@ -2,7 +2,7 @@ import express from "express";
 import {
   createBooking,
   // createPaymentIntent,
-  // searchBookings,
+   searchBookings,
   getBookings,deleteBooking,
   updateAvailability,
 } from "../controller/Booking.js";
@@ -17,4 +17,5 @@ router.delete("/delete-booking/:bookingId", deleteBooking);
 
 
 export default router;
+
 
