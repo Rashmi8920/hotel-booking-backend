@@ -6,36 +6,36 @@ import mongoose from "mongoose";
 import User from "../models/User.js";
 // import Hotel from '../models/Post.js'
 
-// export const searchBookings = async (req, res) => {
-//   try {
-//     const { keyword } = req.params;
+export const searchBookings = async (req, res) => {
+  try {
+    const { keyword } = req.params;
 
-//     // Split the keyword into individual words
-//     const words = keyword.split(" ");
+    // Split the keyword into individual words
+    const words = keyword.split(" ");
 
-//     // Build the query to match any word in the description
-//     const results = await Post.find({
-//       $or: [
-//         { title: { $regex: keyword, $options: "i" } },
-//         {
-//           description: {
-//             $regex: words.join("|"), // Matches any of the words
-//             $options: "i", // Case-insensitive
-//           },
-//         },
-//       ],
-//     }).select("title hotelLocation images description");
+    // Build the query to match any word in the description
+    const results = await Post.find({
+      $or: [
+        { title: { $regex: keyword, $options: "i" } },
+        {
+          description: {
+            $regex: words.join("|"), // Matches any of the words
+            $options: "i", // Case-insensitive
+          },
+        },
+      ],
+    }).select("title hotelLocation images description");
 
-//     res.json(results);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(400).send({
-//       success: false,
-//       message: "Error In Search Product API",
-//       error,
-//     });
-//   }
-// };
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({
+      success: false,
+      message: "Error In Search Product API",
+      error,
+    });
+  }
+};
 
 export const updateAvailability = async (req, res) => {
   const { postId, isAvailable } = req.body;
@@ -224,3 +224,4 @@ export const deleteBooking = async (req, res) => {
 //     });
 //   }
 // };
+
