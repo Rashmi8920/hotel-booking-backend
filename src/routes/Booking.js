@@ -12,8 +12,9 @@ router.patch("/update-availability", updateAvailability);
 router.post("/create-booking", createBooking);
 router.get("/get-all-bookings", getBookings);
 router.delete("/delete-booking/:bookingId", deleteBooking);
-// router.get("/search/:keyword", searchBookings);
+ router.get("/search/:keyword", searchBookings);
 // router.post("/create-payment-intent", createPaymentIntent);
 
 
 export default router;
+
