@@ -154,6 +154,30 @@ export const getRelatedPostsController = async (req, res) => {
     // console.log(error)
   }
 };
+export const postFiltersController = async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+
+    // Build query object
+    let args = {};
+    if (checked?.length) args.guest = { $in: checked }; // Match guest count
+    if (radio?.length === 2) args.price = { $gte: radio[0], $lte: radio[1] }; // Match price range
+
+    // Fetch filtered posts
+    const products = await Post.find(args);
+    res.status(200).send({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    console.error("Error while filtering products:", error);
+    res.status(400).send({
+      success: false,
+      message: "Error while filtering products",
+      error,
+    });
+  }
+};
 
 
 // export const updatePostController = async (req, res) => {
@@ -297,3 +321,4 @@ export const getRelatedPostsController = async (req, res) => {
 //     console.log(error);
 //   }
 // };
+
