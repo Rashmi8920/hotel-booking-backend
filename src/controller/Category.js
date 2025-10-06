@@ -123,7 +123,7 @@ export const singleCategory=async(req,res)=>{
 export const selectedCategoryController = async (req, res) => {
   try {
     const category = await CategoryModel.findOne({ slug: req.params.slug });
-    const products = await Post.find({ category }).populate("category");
+    const products = await postModel.find({ category }).populate("category");
     res.status(200).send({
       success: true,
       message: "Your selected products has been fetched",
@@ -138,4 +138,5 @@ export const selectedCategoryController = async (req, res) => {
     });
   }
 };
+
 
