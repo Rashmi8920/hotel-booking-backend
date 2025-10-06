@@ -117,5 +117,24 @@ export const singleCategory=async(req,res)=>{
         error,
     });  
     }
-    
 }
+
+
+export const selectedCategoryController = async (req, res) => {
+  try {
+    const category = await categoryModel.findOne({ slug: req.params.slug });
+    const products = await Post.find({ category }).populate("category");
+    res.status(200).send({
+      success: true,
+      message: "Your selected products has been fetched",
+      category,
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Selected Product API",
+    });
+  }
+};
