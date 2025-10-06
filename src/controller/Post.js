@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-// import cloudinary from "../config/Cloudinary.js";
+ import cloudinary from "../config/Cloudinary.js";
 import Post from "../models/Post.js";
 import slugify from "slugify";
 
@@ -321,4 +321,5 @@ export const postFiltersController = async (req, res) => {
 //     console.log(error);
 //   }
 // };
+
 
