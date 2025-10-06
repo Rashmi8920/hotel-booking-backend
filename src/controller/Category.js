@@ -122,7 +122,7 @@ export const singleCategory=async(req,res)=>{
 
 export const selectedCategoryController = async (req, res) => {
   try {
-    const category = await categoryModel.findOne({ slug: req.params.slug });
+    const category = await CategoryModel.findOne({ slug: req.params.slug });
     const products = await Post.find({ category }).populate("category");
     res.status(200).send({
       success: true,
@@ -138,3 +138,4 @@ export const selectedCategoryController = async (req, res) => {
     });
   }
 };
+
