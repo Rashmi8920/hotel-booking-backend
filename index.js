@@ -39,7 +39,6 @@ app.use('/api/post',postRoutes);
 app.use("/api/category",categoryRoutes)
 app.use("/api/booking",bookingRoutes)
 
-
-app.listen(PORT,()=>{
-    console.log(`server is run on ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
 });
