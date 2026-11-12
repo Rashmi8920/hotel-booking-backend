@@ -17,7 +17,11 @@ dotenv.config();
 
 // OR allow only your frontend
 app.use(cors({
-    origin:["http://localhost:5173","http://localhost:5174"], // frontend origin
+   origin: [
+        "http://localhost:5173", 
+        "http://localhost:5174",
+        "https://hotel-booking-app-4nue.onrender.com" // Aapka live frontend URL
+    ],
       methods: ["GET", "POST", "PATCH", "DELETE","PUT"],
     credentials: true,
 }));
